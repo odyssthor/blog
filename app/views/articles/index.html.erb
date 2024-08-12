@@ -1,0 +1,26 @@
+<h1>Articles</h1>
+
+Our blog has <%= Article.public_count %> articles and counting!
+
+<ul>
+  <% @articles.each do |article| %>
+    <% unless article.archived? %>
+        <li>
+    <!--  FORMA 1: llamanado a un enlace con definicion de texto y destino-->
+          <%= link_to article.title, article %>
+
+    <!--  FORMA 2: llamando al helper de rutas | completa el prefijo del endpoint - interpreta el parametro articule como article.id |-->
+    <!--      <a href="<%#= article_path(article) %>">-->
+            <%#= article.title %>
+    <!--      </a>-->
+
+    <!--  FORMA 3: llamando a la ruta directamente-->
+    <!--      <a href="/articles/<%#= article.id %>">-->
+            <%#= article.title %>
+    <!--      </a>-->
+        </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= link_to "New Article", new_article_path %>
